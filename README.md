@@ -1,21 +1,26 @@
 # solana-hex-program
-Simple Solana program for safe funds transfer
 
-<h2>Algorithm</h2>
+The `solana-hex-program` is a simple Solana program designed for safe funds transfer.
 
-- Backend creates an associated **PDA** Account and writes payment info to an Account data
-- Frontend passes this account in the transaction then the program withdraws funds from a signer
-- Backend checks the "status" field in the **PDA** data
+## Algorithm
 
-<h2>Build</h2>
+The algorithm for the program is as follows:
 
-- Build binary **.so** file: `cargo-build-bpf`
-- Deploy: `solana program deploy target/deploy/transfer_program.so`
+1. The backend creates an associated Program Derived Address (PDA) account and writes the payment information to the account data.
+2. The frontend includes this PDA account in the transaction, and the program withdraws funds from a signer account.
+3. The backend checks the "status" field in the PDA data to validate the transaction.
 
-<h2>Examples</h2>
+## Build
 
-Payment info struct serialization: [Example](https://github.com/Sssilencee/solana-hex-program/blob/main/client/serialization-example.ts)
+To build the program, follow these steps:
 
-<h2>Admin account</h2>
+1. Build the binary `.so` file using the command: `cargo build-bpf`.
+2. Deploy the program using the command: `solana program deploy target/deploy/transfer_program.so`.
 
-Program admin account (Backend): [ADMIN_ACCOUNT_ID](https://github.com/Sssilencee/solana-hex-program/blob/b02c983c3cc7f87ce5060313de07ee6866a3bbf8/program/src/lib.rs#L16)
+## Examples
+
+Serialization of the payment info struct can be found in this [example](https://github.com/Sssilencee/solana-hex-program/blob/main/client/serialization-example.ts).
+
+## Admin Account
+
+The program admin account for the backend can be found at [ADMIN_ACCOUNT_ID](https://github.com/Sssilencee/solana-hex-program/blob/b02c983c3cc7f87ce5060313de07ee6866a3bbf8/program/src/lib.rs#L16).
